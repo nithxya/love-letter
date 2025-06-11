@@ -1,0 +1,300 @@
+/* Reset & Base Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff0f5;
+  color: #333;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#hearts-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  color: white;
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid white;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards;
+  font-size: 2.5rem;
+}
+
+@keyframes typing {
+  to { width: 100%; }
+}
+
+.subtext {
+  font-size: 1.3rem;
+  margin-top: 10px;
+  opacity: 0;
+  animation: fadeIn 2s 3s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Gallery Section */
+.gallery {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.gallery h2 {
+  color: #ff6f91;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.media-grid img,
+.media-grid video {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.media-grid img:hover,
+.media-grid video:hover {
+  transform: scale(1.05);
+}
+
+/* Message Section */
+.message {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.envelope-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 100px auto 80px;
+  position: relative;
+  height: 400px;
+  max-width: 100%;
+  overflow: visible;
+}
+.floating-text {
+  position: absolute;
+  top: -40px;
+  font-size: 1.2rem;
+  color: #ff6f91;
+  animation: float 2s ease-in-out infinite;
+  font-weight: bold;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+
+/* Envelope Style */
+.envelope {
+  position: relative;
+  width: 300px;
+  height: 180px;
+  background: #ffc0cb;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.envelope .flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: #ff8da1;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  z-index: 3;
+}
+
+.envelope .heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  z-index: 4;
+}
+
+
+
+/* Letter (hidden until opened) */
+.letter {
+  position: absolute;
+  bottom: 0;
+  width: 280px;
+  max-height: 300px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.6s ease, opacity 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: 1;
+  overflow-y: auto;
+}
+
+.letter h3 {
+  margin-top: 0;
+  color: #d94f9d;
+}
+
+.letter.show {
+  opacity: 1;
+  transform: translateY(-320px);
+  z-index: 5;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero {
+    padding: 40px 15px;
+  }
+
+  .typewriter {
+    font-size: 1.8rem;
+  }
+
+  .subtext {
+    font-size: 1rem;
+  }
+
+  .envelope-wrapper {
+    height: 380px;
+  }
+
+  .letter.show {
+    transform: translateY(-300px);
+  }
+}
+#typewriter-text::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+  color: #d94f9d;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+/* Typewriter cursor */
+#typewriter-text::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+  color: #d94f9d;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Controls inside the letter */
+.letter-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.letter-controls button {
+  background-color: #ff8da1;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.letter-controls button:hover {
+  background-color: #ff6f91;
+}
+
+/* Fullscreen style */
+.letter.fullscreen {
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  width: 90%;
+  height: 90%;
+  max-height: none;
+  overflow-y: auto;
+  z-index: 9999;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+}
+#petal-container {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Ftoppng.com%2Ffree-image%2Ffalling-flower-petals-png-red-rose-clipart-transparent-PNG-free-PNG-Images_205035&psig=AOvVaw283xa7WIibM2E-ExesssWy&ust=1749743914286000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCODo_Zne6Y0DFQAAAAAdAAAAABAE'); /* Replace with your petal image */
+  background-size: cover;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
